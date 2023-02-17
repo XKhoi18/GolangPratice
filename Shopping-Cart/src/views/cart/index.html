@@ -1,0 +1,177 @@
+<html>
+    <head>
+        <title>Cart Items</title>
+
+        <link href="/assets/css/style2.css" rel="stylesheet">
+        <link href="/assets/css/style.css" rel="stylesheet">
+        <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/assets/css/linearicons.css">
+        <link rel="stylesheet" href="/assets/css/product.css">
+    </head>
+    <body>
+        <header class="header">
+            <div class="header__nav">
+            
+                <!-- ------------------ -->
+                <!-- HEADER LOGO-->
+                <!-- ------------------ -->
+            
+                <div class="logo__img">
+                    <!-- <a href="./index.jsp"><img src="img/logo.png" width="100%" alt="HIGHWIND COMPUTER" /></a> -->
+                </div>
+            
+                <!-- ------------------ -->
+                <!-- HEADER SEARCH -->
+                <!-- ------------------ -->
+            
+                <div class="search__bar">
+                    <form class="search__function" action="searchServlet" method="GET">
+                        <input type="text" placeholder="Search..." name="search" />
+                        <!-- <button type="submit"><i class="fa fa-search"></i></button> -->
+                    </form>
+                </div>
+            
+                <!-- ------------------ -->
+                <!-- HEADER SERVICE-->
+                <!-- ------------------ -->
+            
+                <div class="customer__nav">
+                    <a class="nav__items">
+                        <img src="/assets/images/nav-items/register.png" width="100%" alt="" />
+            
+                        <div class="nav__items__description">
+                            <div class="items__text">Contact Us</div>
+                        </div>
+                    </a>
+                    
+                    {{if .isLogin }}  
+                    <a class="nav__items" href="/account">
+                        <img src="/assets/images/nav-items/login.png" width="100%" alt="" />
+            
+                        <div class="nav__items__description">
+                            <div class="items__text">Log In</div>
+                        </div>
+                    </a>
+                    {{else}}
+                    <a class="nav__items">
+                        <img src="/assets/images/nav-items/login.png" width="100%" alt="" />
+            
+                        <div class="nav__items__description">
+                            <div class="items__text">
+                                <div class="text__welcome">Welcome {{.username}}</div>
+                            </div>
+                        </div>
+                    </a>
+                    <a class="nav__items" href="/cart">
+                        <img src="/assets/images/nav-items/shop.png" width="100%" alt="" />
+            
+                        <div class="nav__items__description">
+                            <div class="items__text">Cart</div>
+                        </div>
+                    </a>            
+                    <a class="nav__items">
+                        <div class="nav__items__description">
+                            <div class="items__text">
+                                <div class="log__out">
+                                    <a class="nav__items" href="/account/logout">Logout</a>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    {{end}}
+                </div>
+            </div>
+        </header>
+        <section class="products">
+			<div class="container">
+				<!-- <div class="section-header">
+					<h2>Cart Items</h2>
+				</div> -->
+				<div class="products-content">
+					<div class="row">
+                        <table style="width: 60%;" class="content-table">
+                            <tr>
+                                <td>Name</td>
+                                <td>Photo</td>
+                                <td>Price</td>
+                                <td>Quantity</td>
+                                <td>Sum</td>
+                                <td>Action</td>
+                            </tr>
+                            {{range .cart}}
+                                <tr>
+                                    <td>{{.Product.Name}}</td>
+                                    <td>
+                                        <img src="/assets/images/{{.Product.Photo}}" alt="" width="120">
+                                    </td>
+                                    <td>{{.Product.Price}}</td>
+                                    <td>{{.Quantity}}</td>
+                                    <td>{{totalItem .}}</td>
+                                    <td>
+                                        <a href="/cart/remove?id={{.Product.Id}}">Remove</a>
+                                    </td>
+                                </tr>
+                            {{end}}
+                            <tr>
+                                <td colspan="5" align="right">Total</td>
+                                <td>{{.total}}</td>
+                            </tr>
+                        </table>
+                        <div style="display: flex; margin: 20px 0px 0px 100px; width: 60%; justify-content: space-between;">
+                        {{if .cart}}
+                        <div>
+                            <a href="/product"><button class="button-18" style="background-color: #7e3333;">Continue Shopping</button></a>
+                        </div>
+                        <div>
+                            <a href="/cart/order" ><button class="button-18">Buy Now</button></a>
+                        </div>
+                        {{else}}
+                            <h4>Your cart is empty. Please select atleast one item.</h4>
+                            <a href="/product"><button class="button-18" style="background-color: #7e3333;">Continue Shopping</button></a>
+                        {{end}}
+                        </div>
+					</div>
+				</div>
+			</div>
+            
+		</section>
+        <!-- <h3>Cart Items</h3>
+        <table style="width: 40%;" class="content-table">
+            <tr>
+                <td>Name</td>
+                <td>Photo</td>
+                <td>Price</td>
+                <td>Quantity</td>
+                <td>Sum</td>
+                <td>Action</td>
+            </tr>
+            {{range .cart}}
+                <tr>
+                    <td>{{.Product.Name}}</td>
+                    <td>
+                        <img src="/static/images/{{.Product.Photo}}" alt="" width="120">
+                    </td>
+                    <td>{{.Product.Price}}</td>
+                    <td>{{.Quantity}}</td>
+                    <td>{{totalItem .}}</td>
+                    <td>
+                        <a href="/cart/remove?id={{.Product.Id}}">Remove</a>
+                    </td>
+                </tr>
+            {{end}}
+            <tr>
+                <td colspan="5" align="right">Total</td>
+                <td>{{.total}}</td>
+            </tr>
+        </table>
+        {{if .cart}}
+            <br>
+            <a href="/cart/order"><button>Buy Now</button></a>
+            <br>
+        {{else}}
+            <h4>Your cart is empty. Please select atleast one item.</h4>
+        {{end}}
+        <br>
+        <a href="/product">Continue Shopping</a> -->
+    </body>
+</html>

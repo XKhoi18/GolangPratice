@@ -1,0 +1,151 @@
+<html>
+    <head>
+        <title>Home Page</title>
+
+        <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/assets/css/linearicons.css">
+        <link rel="stylesheet" href="/assets/css/style.css">
+        <link rel="stylesheet" href="/assets/css/product.css">
+    </head>
+    <body>
+        <!-- {{if .isLogin }}
+            <a href="/account">Login</a>
+        {{else}}
+            <h4>Welcome {{.username}}</h4>
+            <a href="/account/logout">Logout</a>
+        {{end}}
+        <br><br> -->
+        <header class="header">
+            <div class="header__nav">
+            
+                <!-- ------------------ -->
+                <!-- HEADER LOGO-->
+                <!-- ------------------ -->
+            
+                <div class="logo__img">
+                    <!-- <a href="./index.jsp"><img src="img/logo.png" width="100%" alt="HIGHWIND COMPUTER" /></a> -->
+                </div>
+            
+                <!-- ------------------ -->
+                <!-- HEADER SEARCH -->
+                <!-- ------------------ -->
+            
+                <div class="search__bar">
+                    <form class="search__function" action="searchServlet" method="GET">
+                        <input type="text" placeholder="Search..." name="search" />
+                        <!-- <button type="submit"><i class="fa fa-search"></i></button> -->
+                    </form>
+                </div>
+            
+                <!-- ------------------ -->
+                <!-- HEADER SERVICE-->
+                <!-- ------------------ -->
+            
+                <div class="customer__nav">
+                    <a class="nav__items">
+                        <img src="/assets/images/nav-items/register.png" width="100%" alt="" />
+            
+                        <div class="nav__items__description">
+                            <div class="items__text">Contact Us</div>
+                        </div>
+                    </a>
+                    
+                    {{if .isLogin }}  
+                    <a class="nav__items" href="/account">
+                        <img src="/assets/images/nav-items/login.png" width="100%" alt="" />
+            
+                        <div class="nav__items__description">
+                            <div class="items__text">Log In</div>
+                        </div>
+                    </a>
+                    {{else}}
+                    <a class="nav__items">
+                        <img src="/assets/images/nav-items/login.png" width="100%" alt="" />
+            
+                        <div class="nav__items__description">
+                            <div class="items__text">
+                                <div class="text__welcome">Welcome {{.username}}</div>
+                            </div>
+                        </div>
+                    </a>
+                    <a class="nav__items" href="/cart">
+                        <img src="/assets/images/nav-items/shop.png" width="100%" alt="" />
+            
+                        <div class="nav__items__description">
+                            <div class="items__text">Cart</div>
+                        </div>
+                    </a>            
+                    <a class="nav__items">
+                        <div class="nav__items__description">
+                            <div class="items__text">
+                                <div class="log__out">
+                                    <a class="nav__items" href="/account/logout">Logout</a>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    {{end}}
+                </div>
+            </div>
+        </header>
+
+        <!-- <table border="1">
+            <tr>
+                <td>Id</td>
+                <td>Name</td>
+                <td>Photo</td>
+                <td>Price</td>
+                <td>Quantity</td>
+                <td>Action</td>
+            </tr>
+            {{range .products}}
+                <tr>
+                    <td>{{.Id}}</td>
+                    <td>{{.Name}}</td>
+                    <td>
+                        <img src="/static/images/{{.Photo}}" alt="" width="120">
+                    </td>
+                    <td>{{.Price}}</td>
+                    <td>{{.Quantity}}</td>
+                    <td><a href="/cart/buy?id={{.Id}}">Buy</a></td>
+                </tr>
+            {{end}}
+        </table> -->
+
+        <section class="products">
+			<div class="container">
+				<div class="section-header">
+					<h2>Home Page</h2>
+				</div>
+				<div class="products-content">
+					<div class="row">
+                        {{range .products}}
+						<div class="col-md-3 col-sm-4">
+							<div class="single-product">
+								<div class="single-product-bg">
+									<img src="/assets/images/{{.Photo}}">
+									<div class="single-product-bg-overlay"></div>
+									<div class="product-cart">
+										<p>
+											<!-- <span class="lnr lnr-cart"></span> -->
+											<a href="/cart/buy?id={{.Id}}">add <span>to </span> cart</a>
+										</p>
+										<!-- <p class="product-review pull-right">
+											<span class="lnr lnr-heart"></span>
+											<span class="lnr lnr-frame-expand"></span>
+										</p> -->
+									</div>
+								</div>
+								<br>
+								<h4><a href="#">{{.Name}}</a></h4>
+								<p class="arrival-product-price">${{.Price}}</p>
+							</div>
+						</div>
+                        {{end}}
+					</div>
+				</div>
+			</div>
+            
+		</section>
+    </body>
+</html>

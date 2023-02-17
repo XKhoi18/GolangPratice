@@ -1,0 +1,53 @@
+<html>
+    <head>
+        <title>Login</title>
+
+        <link href="/assets/css/style2.css" rel="stylesheet">
+    </head>
+    <body>
+        <!-- <form method="post" action="/account/login">
+            Username <input type="text" name="username">
+            <br>
+            Password <input type="password" name="password">
+            <br>
+            <input type="submit" value="Login">
+        </form> -->
+
+        <section id="container">
+            <!--header-->
+            <header class="header black-bg">
+                <div class="sidebar-toggle-box">
+                    <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
+                </div>
+                <!--logo start-->
+                <a href="/account/logout" class="logo"><b> </b></a>
+                <!--logo end-->
+            </header>
+            <!--MAIN CONTENT-->
+            <!--main content start-->
+            <div class="wrapper">
+                <div id="formContent">
+                    <!-- Login Form -->
+                    <form action="/account/login" method="post"><br>
+                        <h1>Log In</h1>
+                        <input type="text" id="login" name="username" placeholder="Username">
+                        <input type="password" id="password" name="password" placeholder="Password">
+                        {{if .errLogin}}
+                            <h4>Invaild Username or Password</h4>
+                        {{else}}
+                            <h4>Please enter Username and Password</h4>
+                        {{end}}
+
+                        <input type="submit" value="Log In">
+                    </form>
+                </div>
+            </div>   
+            <!--main content end-->
+            <!--footer start-->
+            <footer class="site-footer">
+                <!-- <jsp:include page="model/adminfooter.jsp"></jsp:include> -->
+            </footer>
+            <!--footer end-->
+        </section>
+    </body>
+</html>

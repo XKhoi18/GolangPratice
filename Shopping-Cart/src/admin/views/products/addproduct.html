@@ -1,0 +1,168 @@
+<html>
+    <head>
+        <title>Add Product</title>
+
+        <link href="/assets/css/style2.css" rel="stylesheet">
+        <link href="/assets/css/style.css" rel="stylesheet">
+    </head>
+    <body>
+        <!-- {{.error}} -->
+        <!-- <form method="post" action="/productlist/addsubmit">
+            <table>
+                <tr>
+                    <td>Name</td>
+                    <td><input type="text" name="name"></td>
+                </tr>
+                <tr>
+                    <td>Price</td>
+                    <td><input type="number" name="price" min="0"></td>
+                </tr>
+                <tr>
+                    <td>Quantity</td>
+                    <td><input type="number" name="quantity" min="0"></td>
+                </tr>
+                <tr>
+                    <td>Photo</td>
+                    <td><input type="file" name="photo"></td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>
+                        <input type="submit" value="Save">
+                    </td>
+                </tr>
+            </table>
+        </form> -->
+
+        <header class="header black-bg">
+            <div class="sidebar-toggle-box">
+                <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
+            </div>
+            <!--logo start-->
+            <a href="#" class="logo"><b><span>ADMIN PAGE</span></b></a>
+            <!--logo end-->
+            <div class="top-menu">
+                <ul class="nav top-menu">
+                     <!-- <% if (session.getAttribute("adusername") != null) {%>
+                    <li><a class="logout">Welcome ${adusername}</a></li>
+                    <%}%> -->
+
+                    {{if .isLogin }}
+                        <!-- <li><a href="/account" class="logout">Login</a></li> -->
+                    {{else}}
+                        <li><a class="logout">Welcome {{.username}}</a></li>
+                    {{end}}
+                </ul>
+            </div>
+        </header>
+        <aside>
+            <div id="sidebar" class="nav-collapse ">
+                <!-- sidebar menu start-->
+                <ul class="sidebar-menu" id="nav-accordion">
+                    <!-- <h5 class="centered">ADMIN COMMAND LIST</h5> -->
+                    <!-- <li class="mt">
+                        <a href="indexadmin.jsp">
+                            <i class="fa fa-dashboard"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>-->
+                    <!-- <li class="sub-menu">
+                        <a href="adminmanager.jsp">
+                            <i class="fa fa-desktop"></i>
+                            <span>Manager List</span>
+                        </a>
+                    </li>
+                    <li class="sub-menu">
+                        <a href="admincustomer.jsp">
+                            <i class="fa fa-comments-o"></i>
+                            <span>Customer List</span>
+                        </a>
+                    </li> -->
+                    <li class="sub-menu">
+                        <a href="/productlist"> 
+                            <i class="fa fa-key"></i>
+                            <span>Product List</span>
+                        </a>
+                    </li>
+                    <!-- <li class="sub-menu">
+                        <a href="javascript:;">
+                            <i class="fa fa-book"></i>
+                            <span>Bill</span>
+                        </a>
+                        <ul class="sub">
+                            <li>
+                                <a href="adminbill.jsp">Bill Manage</a>
+                            </li>
+                            <li>
+                                <a href="adminbilldetail.jsp">Bill Detail Manage</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="sub-menu">
+                        <a href="adminbrand.jsp">
+                            <i class="fa fa-tasks"></i>
+                            <span>Brand Manage</span>
+                        </a>
+                    </li>
+                    <li class="sub-menu">
+                        <a href="adminnation.jsp">
+                            <i class="fa fa-map-marker"></i>
+                            <span>Nation Manage</span>
+                        </a>                   
+                    </li>
+                    <li class="sub-menu">
+                        <a href="adminreport.jsp">
+                            <i class="fa fa-book"></i>
+                            <span>Report</span>
+                        </a>                   
+                    </li>
+                    <li class="sub-menu">
+                        <a href="admininventory.jsp">
+                            <i class="fa fa-book"></i>
+                            <span>Inventory Summary</span>
+                        </a>                   
+                    </li> -->
+                    <li class="sub-menu">
+                        <a href="/account/logout"> 
+                            <i class="fa fa-key"></i>
+                            <span>Log Out</span>
+                        </a>                   
+                    </li>
+                </ul>                                                    
+                <!-- sidebar menu end-->
+            </div>
+        </aside>
+        <div id="main-content">
+            <h3 style="margin-left: 50px;"></h3>
+            <br>
+        <form method="post" action="/productlist/addsubmit">
+            <table class="content-table" style="width: 40%;">
+                <tbody>
+                    <tr>
+                        <td>Name</td>
+                        <td><input type="text" name="name"></td>
+                    </tr>
+                    <tr>
+                        <td>Price</td>
+                        <td><input type="number" name="price" min="0"></td>
+                    </tr>
+                    <tr>
+                        <td>Quantity</td>
+                        <td><input type="number" name="quantity" min="0"></td>
+                    </tr>
+                    <tr>
+                        <td>Photo</td>
+                        <td><input type="file" name="photo"></td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td>
+                            <input type="submit" value="Save">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+        </div>
+    </body>
+</html>

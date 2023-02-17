@@ -1,0 +1,201 @@
+<html>
+    <head>
+        <title>Product List</title>
+
+        <link href="/assets/css/style2.css" rel="stylesheet">
+        <link href="/assets/css/style.css" rel="stylesheet">
+    </head>
+    <body>
+        <!-- <h3>Product List</h3>
+        {{if .isLogin }}
+            <a href="/account">Login</a>
+        {{else}}
+            <h4>Welcome {{.username}}</h4>
+            <a href="/account/logout">Logout</a>
+        {{end}}
+        <br><br>
+        <a href="/productlist/add">Create New Product</a>
+        <br><br> -->
+        <!-- <table border="1">
+            <tr>
+                <td>Id</td>
+                <td>Name</td>
+                <td>Photo</td>
+                <td>Price</td>
+                <td>Quantity</td>
+                <td>Action</td>
+            </tr>
+            {{range .products}}
+                <tr>
+                    <td>{{.Id}}</td>
+                    <td>{{.Name}}</td>
+                    <td>
+                        <img src="/static/images/{{.Photo}}" alt="" width="120">
+                    </td>
+                    <td>{{.Price}}</td>
+                    <td>{{.Quantity}}</td>
+                    <td>
+                        <a href="/productlist/edit?id={{.Id}}">Edit</a> |
+                        <a href="/productlist/delete?id={{.Id}}" onclick="return confirm('Are you sure ?')">Delete</a>
+                    </td>
+                </tr>
+            {{end}}   
+        </table>    -->
+
+            <!--header-->
+            <header class="header black-bg">
+                <div class="sidebar-toggle-box">
+                    <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
+                </div>
+                <!--logo start-->
+                <a href="#" class="logo"><b><span>ADMIN PAGE</span></b></a>
+                <!--logo end-->
+                <div class="top-menu">
+                    <ul class="nav top-menu">
+                         <!-- <% if (session.getAttribute("adusername") != null) {%>
+                        <li><a class="logout">Welcome ${adusername}</a></li>
+                        <%}%> -->
+
+                        {{if .isLogin }}
+                            <!-- <li><a href="/account" class="logout">Login</a></li> -->
+                        {{else}}
+                            <li><a class="logout">Welcome {{.username}}</a></li>
+                        {{end}}
+                    </ul>
+                </div>
+            </header>
+    
+            <!--MAIN SIDEBAR MENU-->
+            <aside>
+                <div id="sidebar" class="nav-collapse ">
+                    <!-- sidebar menu start-->
+                    <ul class="sidebar-menu" id="nav-accordion">
+                        <!-- <h5 class="centered">ADMIN COMMAND LIST</h5> -->
+    <!--                    <li class="mt">
+                            <a href="indexadmin.jsp">
+                                <i class="fa fa-dashboard"></i>
+                                <span>Dashboard</span>
+                            </a>
+                        </li>-->
+                        <!-- <li class="sub-menu">
+                            <a href="adminmanager.jsp">
+                                <i class="fa fa-desktop"></i>
+                                <span>Manager List</span>
+                            </a>
+                        </li>
+                        <li class="sub-menu">
+                            <a href="admincustomer.jsp">
+                                <i class="fa fa-comments-o"></i>
+                                <span>Customer List</span>
+                            </a>
+                        </li> -->
+                        <li class="sub-menu">
+                            <a href="/productlist"> 
+                                <i class="fa fa-key"></i>
+                                <span>Product List</span>
+                            </a>
+                        </li>
+                        <!-- <li class="sub-menu">
+                            <a href="javascript:;">
+                                <i class="fa fa-book"></i>
+                                <span>Bill</span>
+                            </a>
+                            <ul class="sub">
+                                <li>
+                                    <a href="adminbill.jsp">Bill Manage</a>
+                                </li>
+                                <li>
+                                    <a href="adminbilldetail.jsp">Bill Detail Manage</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="sub-menu">
+                            <a href="adminbrand.jsp">
+                                <i class="fa fa-tasks"></i>
+                                <span>Brand Manage</span>
+                            </a>
+                        </li>
+                        <li class="sub-menu">
+                            <a href="adminnation.jsp">
+                                <i class="fa fa-map-marker"></i>
+                                <span>Nation Manage</span>
+                            </a>                   
+                        </li>
+                        <li class="sub-menu">
+                            <a href="adminreport.jsp">
+                                <i class="fa fa-book"></i>
+                                <span>Report</span>
+                            </a>                   
+                        </li>
+                        <li class="sub-menu">
+                            <a href="admininventory.jsp">
+                                <i class="fa fa-book"></i>
+                                <span>Inventory Summary</span>
+                            </a>                   
+                        </li> -->
+                        <li class="sub-menu">
+                            <a href="/account/logout"> 
+                                <i class="fa fa-key"></i>
+                                <span>Log Out</span>
+                            </a>                   
+                        </li>
+                    </ul>                                                    
+                    <!-- sidebar menu end-->
+                </div>
+            </aside>
+    
+            <!--MAIN CONTENT-->
+            <!--main content start-->
+            <div id="main-content">
+                <p>
+                    <a href="/productlist/add"><button class="button" style='margin-left:450px;'>Add New Product</button></a>
+                </p>
+                <table class="content-table">
+                    <thead>
+                        <th>
+                            ProductID
+                        </th>
+                        <th>
+                            Product Name
+                        </th>
+                        <th>
+                            Photo
+                        </th>
+                        <th>
+                            Price
+                        </th>
+                        <th>
+                            Quantity
+                        </th>
+                        <th>
+                        </th>
+                    </thead>
+                    <tbody>
+                    {{range .products}}
+                        <tr>
+                            <td>
+                                {{.Id}}
+                            </td>
+                            <td>
+                                {{.Name}}
+                            </td>
+                            <td>
+                                <img src="/assets/images/{{.Photo}}" alt="" width="120">
+                            </td>
+                            <td>
+                                {{.Price}}
+                            </td>
+                            <td>
+                                {{.Quantity}}
+                            </td>
+                            <td style="font-size:18px;">
+                                <a href="/productlist/edit?id={{.Id}}">Edit</a> |
+                                <a href="/productlist/delete?id={{.Id}}" onclick="return confirm('Are you sure ?')">Delete</a>
+                            </td>
+                        </tr>
+                    {{end}}
+                    </tbody>    
+                </table>
+            </div>
+    </body>        
+</html>
